@@ -1,3 +1,4 @@
+import smtplib
 from datetime import date
 from flask import Flask, abort, render_template, redirect, url_for, flash,request
 from flask_bootstrap import Bootstrap5
@@ -201,9 +202,26 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/contact")
+@app.route("/contact",methods = ["GET","POST"])
 def contact():
-    return render_template("contact.html")
+    if request.method == "POST":
+        send_mail(mail_id = request.form["email"], name = request.form["name"], phone_no = request.form["phone"], message = request.form["message"])
+        return redirect(url_for('contact'))
+    else:
+        return render_template("contact.html")
+
+def send_mail(mail_id,name,phone_no,message):
+    with smtplib.SMTP("smtp.gmail.com") as connection:
+        connection.starttls()
+        connection.login(user=os.getenv("MY_EMAIL"), password=os.getenv("PASSWORD"))
+        connection.sendmail(
+            from_addr=mail_id,
+            to_addrs=os.getenv("MY_EMAIL"),
+            msg="Subject : Hello there Dhaksh. I would love to connect with you.\n\n"
+                f"Name : {name}\n"
+                f"Phone no : {phone_no}\n"
+                f"Message : {message}"
+        )
 
 
 if __name__ == "__main__":

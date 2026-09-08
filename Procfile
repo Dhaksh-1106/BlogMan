@@ -1,0 +1,1 @@
+web: Gunicorn main:app

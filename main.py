@@ -62,8 +62,8 @@ class BlogComment(db.Model):
     author : Mapped["User"] = relationship(back_populates="blog_comments")
     post : Mapped["BlogPost"] = relationship(back_populates="blog_comments")
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 @app.context_processor
 def global_injection():

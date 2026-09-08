@@ -1,4 +1,5 @@
 Bootstrap_Flask==2.5.0
+Email-validator==2.3.0
 Flask_CKEditor==1.0.0
 Flask_Login==0.6.3
 Flask_WTF==1.2.2

@@ -165,7 +165,3 @@ Passwords are stored as hashes using Werkzeug's password-hashing helpers rather 
 ## Contributing
 
 Issues and pull requests are welcome. For changes, please describe the behavior being updated and include steps to verify it manually. Avoid including secrets or personal data in commits and issue reports.
-
-## License
-
-No license file is currently provided. Unless a license is added, the project should be treated as having no explicit open-source reuse license.
